@@ -1,0 +1,50 @@
+.media {
+    height: 0;
+    padding-top:56.25%;
+    background-color: rgb(0,0,0,0.5);
+    background-blend-mode: darken;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+    height: 100%;
+    width: 50%;
+    position: relative;
+    margin-top: 30px;
+    border: solid  #4d4b4b ;
+}
+
+.details{
+    display: 'flex';
+    justify-content: 'space-between';
+    margin: '20px';
+}
+.title {
+    padding: '0 16px';
+}
+.cardActions {
+    padding: '0 16px 8px 16px';
+    display: 'flex';
+    justify-content: 'space-between';
+}
+.grid{
+    display: flex;
+}
+
+.overlay{
+    position: absolute;
+    top:20px;
+    left: 20px;
+    color: whitesmoke;
+
+    
+}
+.overlay2{
+    position: absolute;
+    font-size: 40px;
+    top: 20px;
+    left: 88%;
+
+}

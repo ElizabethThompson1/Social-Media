@@ -17,11 +17,11 @@ app.use("/posts", postRoutes);
 
 
 const CONNECTION_URL =
-  "mongodb+srv://Thompsonsma:thompson123@socialmedia.dzxxbk1.mongodb.net/?retryWrites=true&w=majority";
+"mongodb+srv://Lizlove:Lizlove1@socialmedia.wvluj5e.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(CONNECTION_URL, {  useUnifiedTopology: true })
+  .connect(CONNECTION_URL, {useNewUrlParser: true,  useUnifiedTopology: true })
   .then(() =>
     app.listen(PORT, () => console.log(`server running on port : ${PORT}`))
   )
