@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@mui/material";
 import FileBase64 from "react-file-base64";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
-import "./style.css"
+import "./style.css";
 
-
-const Form = (currentId,setCurrentId) => {
+const Form = ({currentId,setCurrentId}) => {
   const dispatch = useDispatch();
+  const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId): null);
   const [postData, setPostData] = useState({
     user: '',
     message: '',
     tags: '',
     selectedFile: '',
   });
+  
+  
+  useEffect(()=>{
+    if(post) setPostData(post);
+  },[post])
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if(currentId){
-      dispatch(updatePost(currentId,postData));
+      dispatch(updatePost(currentId, postData));
     }else{
       dispatch(createPost(postData));
     }
@@ -31,7 +36,7 @@ const Form = (currentId,setCurrentId) => {
   return (
     <Paper className="container">
       <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-        <Typography  variant="h6" className="Title" >Create a Post</Typography>
+        <Typography  variant="h6" className="Title" >{currentId ? "Editing" : "Creating"} a Post</Typography>
         <TextField className="text"
           name="user"
           variant="outlined"
@@ -47,21 +52,21 @@ const Form = (currentId,setCurrentId) => {
           variant="outlined"
           placeholder="Message"
           fullWidth
-          value={postData.creator}
+          value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
           }
         />
         <TextField className="text"
           name="tags"
-          placeholder="outlined"
+          placeholder="#tags"
           variant="outlined"
           fullWidth
-          value={postData.creator}
+          value={postData.tags}
           onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
         />
         <div className="filebase">
-          <FileBase64  type="file" multiple={false} onDone= {({base64}) => setPostData({...postData, selectedFile:base64})} />
+          <FileBase64  type="file"  multiple={false} onDone= {({base64}) => setPostData({...postData, selectedFile:base64})} />
         </div>
           <Button variant="contained" align="center" type="submit"  >Submit</Button>
           <Button variant="contained" align="center" onClick={clear} >Clear</Button> 

@@ -22,7 +22,7 @@ const App = () => {
             <Grow in>
                 <Container>
                     <Grid item xs ={12} sm={4}>
-                        <Form currentId={currentId}/>
+                        <Form currentId={currentId} setCurrentId={setCurrentId}/>
                     </Grid>
                     <Grid   >
                         <Post setCurrentId={setCurrentId} className="post"/>
