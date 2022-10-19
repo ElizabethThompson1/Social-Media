@@ -4,10 +4,10 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import moment from "moment";
-import "./post.css"
+import "./style.css"
 
 
-const Post = ({post}) => {
+const Post = ({post, SetCurrentId}) => {
 
     return(
         <Card className="card">
@@ -27,7 +27,7 @@ const Post = ({post}) => {
                         <Typography variant="body2" gutterBottom>{post.message}</Typography>
                     </CardContent>
                     <CardActions className="cardAction">
-                        <Button  onClick={() => {}}>
+                        <Button  onClick={() => SetCurrentId(post._id)}>
                             <ThumbUpIcon fontSize="small"/>
                             Like {post.likeCount}
                         </Button>

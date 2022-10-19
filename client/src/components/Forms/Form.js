@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { TextField, Button, Typography, Paper } from "@mui/material";
 import FileBase64 from "react-file-base64";
 import { useDispatch } from "react-redux";
-import { createPost } from "../../actions/posts";
-import "./Form.css"
+import { createPost, updatePost } from "../../actions/posts";
+import "./style.css"
 
-const Form = () => {
+
+const Form = (currentId,setCurrentId) => {
   const dispatch = useDispatch();
   const [postData, setPostData] = useState({
     user: '',
@@ -16,8 +17,12 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    dispatch(createPost(postData));
+
+    if(currentId){
+      dispatch(updatePost(currentId,postData));
+    }else{
+      dispatch(createPost(postData));
+    }
     
   }
 
@@ -58,8 +63,8 @@ const Form = () => {
         <div className="filebase">
           <FileBase64  type="file" multiple={false} onDone= {({base64}) => setPostData({...postData, selectedFile:base64})} />
         </div>
-        <Button variant="contained" type="submit" size="large"  >Submit</Button>
-        <Button variant="contained" size="small"   onClick={clear} >Clear</Button>
+          <Button variant="contained" align="center" type="submit"  >Submit</Button>
+          <Button variant="contained" align="center" onClick={clear} >Clear</Button> 
       </form>
     </Paper>
   );
