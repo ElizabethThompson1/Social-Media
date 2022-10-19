@@ -5,12 +5,11 @@
     background-blend-mode: darken;
 }
 .card{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     border-radius: 15px;
     height: 100%;
-    width: 50%;
+    width: 90%;
+    margin-left: 5%;
+    align-items: center;
     position: relative;
     margin-top: 30px;
     border: solid  #4d4b4b ;
