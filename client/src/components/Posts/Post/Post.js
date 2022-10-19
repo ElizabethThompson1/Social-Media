@@ -4,16 +4,19 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import moment from "moment";
+import { useDispatch } from "react-redux";
 import "./style.css"
+import { deletePost } from "../../../actions/posts";
 
 
 
 const Post = ({post, setCurrentId}) => {
+    const dispatch = useDispatch();
 
 
     return(
         <Card className="card">
-            <CardMedia className="media" image= {post.selectedFile} title= {post.title}/>
+            <CardMedia className="media" image= {post.selectedFile} />
                     <div className="overlay">
                         <Typography variant="h6"  >{post.user}</Typography>
                         <Typography variant="body2"   >{moment(post.createdAt).fromNow()}</Typography>
@@ -33,7 +36,7 @@ const Post = ({post, setCurrentId}) => {
                             <ThumbUpIcon fontSize="small"/>
                             Like {post.likeCount}
                         </Button>
-                        <Button  onClick={() => {}}>
+                        <Button  onClick={() => dispatch(deletePost(post._id))}>
                             <DeleteIcon fontSize="small"/>
                         </Button>
                     </CardActions>

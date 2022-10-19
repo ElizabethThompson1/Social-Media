@@ -18,7 +18,7 @@ const Form = ({currentId,setCurrentId}) => {
   
   useEffect(()=>{
     if(post) setPostData(post);
-  },[post])
+  },[post]) 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,10 +28,15 @@ const Form = ({currentId,setCurrentId}) => {
     }else{
       dispatch(createPost(postData));
     }
-    
+    setCurrentId(null);
+    setPostData({
+      user: '',
+      message: '',
+      tags: '',
+      selectedFile: '',})
   }
 
-  const clear = () => {}
+  
 
   return (
     <Paper className="container">
@@ -69,7 +74,6 @@ const Form = ({currentId,setCurrentId}) => {
           <FileBase64  type="file"  multiple={false} onDone= {({base64}) => setPostData({...postData, selectedFile:base64})} />
         </div>
           <Button variant="contained" align="center" type="submit"  >Submit</Button>
-          <Button variant="contained" align="center" onClick={clear} >Clear</Button> 
       </form>
     </Paper>
   );
