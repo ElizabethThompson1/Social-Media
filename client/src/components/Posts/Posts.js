@@ -6,9 +6,7 @@ import { Grid, CircularProgress } from "@mui/material";
 
 
 const Posts = ({setCurrentId}) => {
-    const posts = useSelector((state) => state.posts)
-
-    console.log(posts);
+    const posts = useSelector((state) => state.posts);
 
     return(
        !posts.length ? <CircularProgress/> : (
@@ -18,10 +16,8 @@ const Posts = ({setCurrentId}) => {
                     <Post post={post} setCurrentId={setCurrentId} />
                 </Grid>
             ))}
-
         </Grid>
        )
-        
     );
 }
 

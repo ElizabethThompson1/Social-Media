@@ -8,12 +8,13 @@ import reducers from "./reducers";
 import "./index.css"
 
 
+
 const store = legacy_createStore(reducers, compose(applyMiddleware(thunk)));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
-       <App className="App" /> 
+        <App className="App" /> 
     </Provider>,
     
 );

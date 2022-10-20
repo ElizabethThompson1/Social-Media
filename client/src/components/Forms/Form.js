@@ -40,6 +40,7 @@ const Form = ({currentId,setCurrentId}) => {
 
   return (
     <Paper className="container">
+      <h1 className="title">Create a Post</h1>
       <form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Typography  variant="h6" className="Title" >{currentId ? "Editing" : "Creating"} a Post</Typography>
         <TextField className="text"

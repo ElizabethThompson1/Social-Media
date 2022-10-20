@@ -10,15 +10,16 @@ import { deletePost,likePost } from "../../../actions/posts";
 
 
 
+
 const Post = ({post, setCurrentId}) => {
     const dispatch = useDispatch();
 
 
     return(
         <Card className="card">
-            <CardMedia className="media" image= {post.selectedFile} />
+            <CardMedia className="media" image={post.selectedFile} />
                     <div className="overlay">
-                        <Typography variant="h6"  >{post.user}</Typography>
+                        <Typography variant="h6" >{post.user}</Typography>
                         <Typography variant="body2"   >{moment(post.createdAt).fromNow()}</Typography>
                     </div>
                     <div className="overlay2">
